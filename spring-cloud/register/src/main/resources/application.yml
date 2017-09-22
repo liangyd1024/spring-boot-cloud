@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: myCloudRegister
+  profiles:
+    active: dev
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: true
+  server:
+    disable-delta: true
+

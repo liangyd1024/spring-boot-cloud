@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: myCloudConsumer
+  profiles:
+    active: dev
+
+server:
+  port: 9100
+
+#注册中心地址 可集群
+eureka:
+  client:
+    service-url:
+      defaultZone: http://deveureka:8080/eureka/
+
+#启动熔断机制
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  security:
+    enabled: false
