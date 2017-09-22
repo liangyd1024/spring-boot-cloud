@@ -23,13 +23,8 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.session</groupId>
@@ -43,7 +38,7 @@
 
         <dependency>
             <groupId>org.webjars.bower</groupId>
-            <artifactId>vue</artifactId>
+            <artifactId>jquery</artifactId>
         </dependency>
 
     </dependencies>

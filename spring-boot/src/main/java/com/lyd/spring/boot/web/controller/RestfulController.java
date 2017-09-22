@@ -1,6 +1,7 @@
 package com.lyd.spring.boot.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,14 @@ import javax.servlet.http.HttpSession;
 public class RestfulController {
 
 
+    @Value("${key.secret}")
+    private String secret;
+
+
     @RequestMapping("/hello")
     public String hello(HttpSession session){
-       log.info("call hello sessionId:{}",session.getId());
-       return session.getId();
+       log.info("call hello secret:{},sessionId:{}",secret,session.getId());
+       return secret+"-"+session.getId();
     }
 
 

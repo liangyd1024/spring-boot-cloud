@@ -11,3 +11,7 @@ eureka:
   server:
     disable-delta: true
 
+endpoints:
+  shutdown:
+    enabled: true
+
