@@ -2,7 +2,13 @@ package com.lyd.spring.provider.web.controller;
 
 import com.lyd.spring.provider.web.bean.User;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 描述：
@@ -16,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProviderController {
 
     @RequestMapping("/hello")
-    public String say(@RequestParam String name){
+    public String say(@RequestParam String name) throws InterruptedException {
         log.info("call say name:{}",name);
         return "my name is "+name;
     }
@@ -26,6 +32,16 @@ public class ProviderController {
         log.info("call login user:{}",user);
         user.setUserName("call login user");
         return user;
+    }
+
+    @RequestMapping("/timeout")
+    public String timeout() throws InterruptedException {
+        //模拟服务超时
+        int timeout = new Random().nextInt(5)+1;
+        log.info("call timeout start:{}",timeout);
+        TimeUnit.SECONDS.sleep(timeout);
+        log.info("call timeout end:{}",timeout);
+        return "my timeout is sleep:"+timeout;
     }
 
 

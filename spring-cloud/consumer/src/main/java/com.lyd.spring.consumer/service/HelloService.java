@@ -1,6 +1,7 @@
 package com.lyd.spring.consumer.service;
 
 import com.lyd.spring.consumer.web.bean.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,14 +28,16 @@ public interface HelloService {
 
 
 @Component
+@Slf4j
 class HelloServiceImpl implements HelloService{
 
     public String hello(@RequestParam(value = "name") String name) {
-        return "这是熔断后返回的结果";
+        log.info("call hello 这是熔断后返回的结果");
+        return name;
     }
 
     public User login(User user) {
-        System.out.println("这是熔断后返回的结果");
+        log.info("call login 这是熔断后返回的结果");
         return user;
     }
 

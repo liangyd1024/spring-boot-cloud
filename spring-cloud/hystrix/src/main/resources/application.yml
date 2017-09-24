@@ -11,7 +11,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://deveureka:8080/eureka/
+      defaultZone: http://localhost:8080/eureka/
 
 #熔断监控
 turbine:
