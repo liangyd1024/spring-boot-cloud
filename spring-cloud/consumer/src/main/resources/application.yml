@@ -13,6 +13,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8080/eureka/
 
+
 #启动熔断机制
 feign:
   hystrix:
@@ -21,3 +22,9 @@ feign:
 management:
   security:
     enabled: false
+
+##不起用懒加载
+ribbon:
+  eager-load:
+    enabled: true
+    clients: myCloudProvider

@@ -3,6 +3,8 @@ spring:
     name: myCloudProvider
   profiles:
     active: dev
+    ##可以包含的配置文件
+    include: xxx,yyy
 
 server:
   port: 9000
@@ -15,6 +17,3 @@ eureka:
 management:
   security:
     enabled: false
-
-
-

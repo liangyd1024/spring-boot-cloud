@@ -1,10 +1,9 @@
 package com.lyd.spring.consumer.service;
 
-import com.lyd.spring.consumer.web.bean.User;
+import com.lyd.spring.provider.facade.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 

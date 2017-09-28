@@ -1,9 +1,9 @@
-package com.lyd.spring.provider.web.bean;
+package com.lyd.spring.provider.facade.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * 描述：
@@ -14,6 +14,8 @@ import java.io.Serializable;
  */
 @Data
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     private String userName;

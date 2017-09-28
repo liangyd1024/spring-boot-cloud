@@ -1,7 +1,8 @@
 package com.lyd.spring.consumer.web.controller;
 
+import com.lyd.spring.consumer.service.CloudService;
 import com.lyd.spring.consumer.service.HelloService;
-import com.lyd.spring.consumer.web.bean.User;
+import com.lyd.spring.provider.facade.model.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 /**
  * 描述：
@@ -24,11 +27,21 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class ConsumerController {
 
+    /**
+     *  消费者手动包装模式-声明式
+     */
     @Autowired
     private HelloService helloService;
-
+    /**
+     *  消费者手动包装模式-编程式
+     */
     @Autowired
     private RestTemplate restTemplate;
+    /**
+     *  服务端包装模式-声明式
+     */
+    @Autowired
+    private CloudService cloudService;
 
 
     @Bean
@@ -38,26 +51,32 @@ public class ConsumerController {
     }
 
 
-    @RequestMapping("/consumer/{name}")
-    public String consumer(@PathVariable String name){
+    @RequestMapping("/declare/{name}")
+    public String declareName(@PathVariable String name){
         log.info("call consumer name:{}",name);
         return helloService.hello(name);
     }
 
-    @RequestMapping("/consumer/login")
-    public User login(User user){
-        log.info("call login user:{}",user);
+
+    @RequestMapping("/declare/login")
+    public User declareLogin(@RequestParam String userName,@RequestParam String password){
+        log.info("call login userName:{},password:{}",userName,password);
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword(password);
         return helloService.login(user);
     }
 
-    @RequestMapping("/ribbonHello/{name}")
-    public String ribbonHello(@PathVariable String name){
+
+    @RequestMapping("/program/{name}")
+    public String programName(@PathVariable String name){
         log.info("call ribbonHello name:{}",name);
         return restTemplate.getForEntity("http://myCloudProvider/hello?name={name}",String.class,name).getBody();
     }
 
-    @RequestMapping("/ribbonLogin/login")
-    public User ribbonLogin(@RequestParam String userName,@RequestParam String password){
+
+    @RequestMapping("/program/login")
+    public User programLogin(@RequestParam String userName,@RequestParam String password){
         log.info("call ribbonLogin userName:{},password:{}",userName,password);
         User user = new User();
         user.setUserName(userName);
@@ -66,7 +85,7 @@ public class ConsumerController {
     }
 
 
-    @RequestMapping("/ribbonTimeout/timeout")
+    @RequestMapping("/program/timeout")
     @HystrixCommand(fallbackMethod = "ribbonTimeoutCallBack")
     public String ribbonTimeout(){
         log.info("call ribbonTimeout");
@@ -75,8 +94,23 @@ public class ConsumerController {
         return result;
     }
 
+    //回调函数必须在同一个类中
     private String ribbonTimeoutCallBack(Throwable throwable){
         log.info("call ribbonTimeoutCallBack throwable:{}",throwable);
         return "这是超时后的熔断处理";
     }
+
+
+    @RequestMapping("/server/declare/get-all")
+    public List<User> serverDeclareGetAll(@RequestParam String userName){
+        log.info("call serverDeclareGetAll userName:{}",userName);
+        return cloudService.getAll(userName);
+    }
+
+    @RequestMapping("/server/declare/register")
+    public User serverDeclareRegister(@RequestParam String userName,@RequestParam String password){
+        log.info("call serverDeclareRegister userName:{},password:{}",userName,password);
+        return cloudService.register(new User(userName,password));
+    }
+
 }

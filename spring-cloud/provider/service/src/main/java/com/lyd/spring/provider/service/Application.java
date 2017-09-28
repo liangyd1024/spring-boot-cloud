@@ -1,4 +1,4 @@
-package com.lyd.spring.provider;
+package com.lyd.spring.provider.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
