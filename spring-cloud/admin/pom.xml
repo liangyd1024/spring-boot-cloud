@@ -14,7 +14,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <spring.boot.admin.version>1.5.4</spring.boot.admin.version>
+        <spring.boot.admin.version>1.4.5</spring.boot.admin.version>
     </properties>
 
 
