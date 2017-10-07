@@ -2,6 +2,7 @@ package com.lyd.spring.provider.service.web.controller;
 
 import com.lyd.spring.provider.facade.model.User;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class ProviderController {
 
     @RequestMapping("/hello")
-    public String say(@RequestParam String name) throws InterruptedException {
-        log.info("call say name:{}",name);
+    public String say(HttpServletRequest request,@RequestParam String name) throws InterruptedException {
+        log.info("call say name:{},{},{},{},{},{}",name,
+                request.getHeader("X-B3-TraceId"),request.getHeader("X-B3-SpanId"),
+                request.getHeader("X-B3-ParentSpanId"),request.getHeader("X-B3-Sampled"),
+                request.getHeader("X-Span-Name"));
         return "my name is "+name;
     }
 

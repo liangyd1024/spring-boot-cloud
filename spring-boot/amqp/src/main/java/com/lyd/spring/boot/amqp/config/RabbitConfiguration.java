@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * </p>
  * User: lyd Date: 2017/9/30 ProjectName:spring-boot-cloud Version: 1.0
  */
-@Configuration
+//@Configuration
 public class RabbitConfiguration {
 
     public static final String TEST_QUEUE_NAME = "test";

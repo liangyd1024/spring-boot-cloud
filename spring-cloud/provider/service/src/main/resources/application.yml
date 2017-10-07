@@ -5,6 +5,9 @@ spring:
     active: dev
     ##可以包含的配置文件
     include: xxx,yyy
+  #服务追踪
+  zipkin:
+      base-url: http://localhost:9500
 
 server:
   port: 9000
@@ -14,6 +17,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8080/eureka/
 
+#安全验证开关
 management:
   security:
     enabled: false

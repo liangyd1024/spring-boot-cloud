@@ -3,6 +3,9 @@ spring:
     name: myCloudConsumer
   profiles:
     active: dev
+  #服务追踪
+  zipkin:
+    base-url: http://localhost:9500
 
 server:
   port: 9100

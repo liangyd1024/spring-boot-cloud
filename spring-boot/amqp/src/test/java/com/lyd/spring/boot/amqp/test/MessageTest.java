@@ -20,9 +20,7 @@ import java.util.concurrent.TimeUnit;
  * </p>
  * User: lyd Date: 2017/9/30 ProjectName:spring-boot-cloud Version: 1.0
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
-public class MessageTest {
+public class MessageTest extends BaseTest{
 
     @Autowired
     private Sender sender;
