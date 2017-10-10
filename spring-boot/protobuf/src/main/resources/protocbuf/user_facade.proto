@@ -1,0 +1,9 @@
+syntax = "proto2";
+package com.lyd.spring.protobuf.gen.facade;
+
+
+service UserFacade{
+
+
+
+}

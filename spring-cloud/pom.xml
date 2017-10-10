@@ -21,6 +21,7 @@
         <module>zuul</module>
         <module>admin</module>
         <module>zipkin</module>
+        <module>stream</module>
     </modules>
 
 </project>

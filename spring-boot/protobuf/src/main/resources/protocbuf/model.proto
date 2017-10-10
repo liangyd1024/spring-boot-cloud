@@ -1,0 +1,13 @@
+syntax = "proto2";
+option java_package = "com.lyd.spring.protobuf.gen.model";
+option java_multiple_files = true;//指定生成多个类
+
+message User{
+    required string username = 1;
+    optional string password = 2;
+}
+
+message Account{
+    required string accountNo = 1;
+    optional string bal = 2;
+}

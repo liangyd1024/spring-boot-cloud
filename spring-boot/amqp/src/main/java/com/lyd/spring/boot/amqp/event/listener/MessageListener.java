@@ -1,6 +1,6 @@
 package com.lyd.spring.boot.amqp.event.listener;
 
-import com.lyd.spring.boot.amqp.event.target.MessageEvent;
+import com.lyd.spring.boot.amqp.event.event.MessageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 
