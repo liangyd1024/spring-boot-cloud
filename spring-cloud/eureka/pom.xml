@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>register</artifactId>
+    <artifactId>eureka</artifactId>
     <packaging>jar</packaging>
 
-    <name>register</name>
+    <name>eureka</name>
     <url>http://maven.apache.org</url>
 
 
@@ -32,7 +32,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.lyd.spring.register.Application</mainClass>
+                    <mainClass>com.lyd.spring.eureka.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>

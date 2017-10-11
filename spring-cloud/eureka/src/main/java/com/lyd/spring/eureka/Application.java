@@ -1,4 +1,4 @@
-package com.lyd.spring.register;
+package com.lyd.spring.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

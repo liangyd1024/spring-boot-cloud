@@ -1,0 +1,14 @@
+server:
+  port: 8999
+
+spring:
+  application:
+    name: spring-cloud-consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        healthCheckInterval: 10s
+        healthCheckPath: /consul/home
+        instance-id: consul-one

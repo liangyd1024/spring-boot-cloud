@@ -52,9 +52,9 @@
                         <configuration>
                             <tasks>
                                 <echo>Delete folder : ${basedir}/src/main/gen</echo>
-                                <delete dir="${basedir}/src/main/gen" quiet="true" />
+                                <delete dir="${basedir}/src/main/gen/**" quiet="true" />
                                 <echo>Create folder : ${basedir}/src/main/gen</echo>
-                                <mkdir dir="${basedir}/src/main/gen" />
+                                <mkdir dir="${basedir}/src/main/gen/" />
                                 <!-- Compile proto files in all locations -->
                                 <echo>Compiling **/*.proto files...</echo>
                                 <apply executable="${proto.path}">
