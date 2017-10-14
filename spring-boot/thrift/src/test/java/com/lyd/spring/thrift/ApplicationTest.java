@@ -45,7 +45,7 @@ public class ApplicationTest {
     @Test
     public void thrift_test(){
         log.info("call test");
-        try (TSocket transport = new TSocket("127.0.0.1", 7911)) {
+        try (TTransport transport = new TSocket("127.0.0.1", 7911)) {
             transport.open();
             UserFacade.Client client = new UserFacade.Client(new TBinaryProtocol(transport));
             log.info("call client.reg user:{}", user);

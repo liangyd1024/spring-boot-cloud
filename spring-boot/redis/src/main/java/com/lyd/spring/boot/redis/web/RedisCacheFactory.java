@@ -15,8 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
-import java.lang.reflect.Method;
-
 /**
  * 描述：
  * <p>
@@ -30,9 +28,7 @@ public class RedisCacheFactory extends CachingConfigurerSupport {
 
     @Bean
     public KeyGenerator keyGenerator() {
-        return new KeyGenerator() {
-
-            public Object generate(Object target, Method method, Object... params) {
+        return (target,method,params)-> {
                 StringBuilder sb = new StringBuilder();
                 sb.append(target.getClass().getName());
                 sb.append(method.getName());
@@ -40,7 +36,6 @@ public class RedisCacheFactory extends CachingConfigurerSupport {
                     sb.append(obj.toString());
                 }
                 return sb.toString();
-            }
         };
     }
 

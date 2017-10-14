@@ -1,8 +1,11 @@
 package com.lyd.spring.boot.redis.web.controller;
 
+import com.lyd.spring.boot.redis.web.bean.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +40,17 @@ public class RestfulController {
     public String cache(@PathVariable String userName){
         log.info("call cache userName:{}",userName);
         return "cache";
+    }
+
+    @Bean
+    public User user(@Qualifier("object") Object object){
+        log.info("call object:{},obj:{}",object,this.object());
+        return new User();
+    }
+
+    @Bean
+    public Object object(){
+        return new Object();
     }
 
 }

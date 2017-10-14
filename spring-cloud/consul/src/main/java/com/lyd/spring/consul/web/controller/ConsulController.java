@@ -1,6 +1,7 @@
 package com.lyd.spring.consul.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConsulController {
 
 
+    @Value("${a.b:defaultValue}")
+    private String value;
+
+
     @RequestMapping(value = "/home")
     public String home(){
-        log.info("call home this is consul!!!");
+        log.info("call home this is consul!!!,value:{}",value);
         return "this is consul!!!";
     }
 
