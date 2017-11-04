@@ -110,17 +110,17 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>build-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>build-image</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>build</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
                 <configuration>
-                    <imageName>lyd/eureka:1.0.0</imageName>
+                    <imageName>lyd/${project.artifactId}:1.0.0</imageName>
                     <baseImage>java</baseImage>
                     <forceTags>true</forceTags>
                     <entryPoint>["java","-jar","/${project.build.finalName}.jar"]</entryPoint>
