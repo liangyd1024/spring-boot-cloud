@@ -49,15 +49,27 @@ public class ConsulClientTest {
 
 
     @Test
-    public void services_test(){
-        Response<Void> response = consulClient.agentServiceDeregister("consulClientId");
-        log.info("call agentServiceDeregister response:{}",response);
+    public void deRegister_test(){
+        Response<Map<String, Service>> mapResponse = consulClient.getAgentServices();
+        log.info("call getAgentServices mapResponse:{}",mapResponse);
+
+        if(mapResponse.getValue().containsKey("consulClientId")){
+            Response<Void> response = consulClient.agentServiceDeregister("consulClientId","99dc4ca5-740c-3703-88dd-084ab8bdb7af");
+            log.info("call agentServiceDeregister response:{}",response);
+        }
+
+    }
+
+
+    @Test
+    public void register_test(){
+        deRegister_test();
 
         NewService newService = new NewService();
         newService.setId("consulClientId");
         newService.setName("consulClientName");
         newService.setAddress("127.0.0.1");
-        newService.setPort(8999);
+        newService.setPort(80);
         newService.setTags(Arrays.asList("a", "b"));
 
         NewService.Check check = new NewService.Check();
@@ -65,7 +77,7 @@ public class ConsulClientTest {
         check.setInterval("5s");
         newService.setCheck(check);
 
-        response = consulClient.agentServiceRegister(newService);
+        Response<Void> response = consulClient.agentServiceRegister(newService,"99dc4ca5-740c-3703-88dd-084ab8bdb7af");
         log.info("call agentServiceRegister response:{}",response);
     }
 

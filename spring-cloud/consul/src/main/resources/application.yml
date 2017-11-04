@@ -9,6 +9,26 @@ spring:
       host: localhost
       port: 8500
       discovery:
+        instance-id: spring-cloud-consul-id
+        #是否注册 true是
+        register: true
+        #健康检测
         healthCheckInterval: 10s
         healthCheckPath: /consul/home
-        instance-id: consul-one
+        #心跳开关
+        heartbeat:
+          enabled: true
+          ttl-value: 10
+        #是否进行服务发现
+        enabled: true
+        #为服务打标签
+        tags: tag1,tag2
+        #使用token鉴权
+        acl-token: f3c60a7e-2e18-b5c1-f7c9-37803b2d9896
+
+
+logging:
+  level:
+    org.springframework.cloud.consul.discovery: DEBUG
+
+

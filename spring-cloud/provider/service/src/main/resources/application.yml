@@ -15,7 +15,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://Marco.local:8080/eureka/
 
 #安全验证开关
 management:

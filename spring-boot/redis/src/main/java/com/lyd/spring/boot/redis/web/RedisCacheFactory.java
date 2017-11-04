@@ -26,6 +26,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 @EnableCaching
 public class RedisCacheFactory extends CachingConfigurerSupport {
 
+    @Override
     @Bean
     public KeyGenerator keyGenerator() {
         return (target,method,params)-> {
@@ -43,8 +44,8 @@ public class RedisCacheFactory extends CachingConfigurerSupport {
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        //设置缓存过期时间
-        //rcm.setDefaultExpiration(60);//秒
+        //设置缓存过期时间 秒
+        rcm.setDefaultExpiration(60);
         return rcm;
     }
 
