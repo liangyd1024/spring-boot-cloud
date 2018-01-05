@@ -1,8 +1,8 @@
 package com.lyd.spring.consumer.web.controller;
 
+import com.lyd.spring.consumer.model.User;
 import com.lyd.spring.consumer.service.CloudService;
 import com.lyd.spring.consumer.service.HelloService;
-import com.lyd.spring.provider.facade.model.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class ConsumerController {
 
 
     @RequestMapping("/declare/login")
-    public User declareLogin(@RequestParam String userName,@RequestParam String password){
+    public User declareLogin(@RequestParam String userName, @RequestParam String password){
         log.info("call login userName:{},password:{}",userName,password);
         User user = new User();
         user.setUserName(userName);

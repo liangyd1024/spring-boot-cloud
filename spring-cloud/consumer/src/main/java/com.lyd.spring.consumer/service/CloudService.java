@@ -1,6 +1,6 @@
 package com.lyd.spring.consumer.service;
 
-import com.lyd.spring.provider.facade.api.CloudFacade;
+import com.lyd.spring.consumer.api.CloudFacade;
 import org.springframework.cloud.netflix.feign.FeignClient;
 
 /**

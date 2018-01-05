@@ -1,6 +1,6 @@
 package com.lyd.spring.boot.redis.web.controller;
 
-import com.lyd.spring.boot.redis.web.bean.User;
+import com.lyd.spring.boot.redis.web.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

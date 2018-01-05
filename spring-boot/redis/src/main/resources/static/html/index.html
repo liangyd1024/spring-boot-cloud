@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>index</title>
+</head>
+<body style="background-color: #ffffff">
+
+    <h1>
+        index
+    </h1>
+
+    <div>
+
+        <a href="tvpay://aa.bb:80/test?orderNo=1231231232">唤起</a>
+
+        <br/>
+        <br/>
+
+        <form action="/faceId/getTokenV2">
+            <div>
+                <input type="submit" value="获取tokenV2"/><br/>
+                是否有源：
+                <select name="comparisonType">
+                    <option value="1">有源</option>
+                    <option value="0">无源</option>
+                    <option value="-1">不对比</option>
+                </select>
+                <br/>
+                证件号：<input type="text" size="30" name="certNo" value="432503199110130316"/><br/>
+                姓名：<input type="text" size="32" name="certName" value="梁燕东"/><br/>
+            </div>
+        </form>
+
+        <br/>
+        <br/>
+
+        <form action="/faceId/getToken">
+            <div>
+                是否有源：
+                <select name="comparisonType">
+                    <option value="1">有源</option>
+                    <option value="0">无源</option>
+                    <option value="-1">不对比</option>
+                </select>
+                <br/>
+                证件号：<input type="text" size="30" name="certNo" value="432503199110130316"/><br/>
+                姓名：<input type="text" size="32" name="certName" value="梁燕东"/><br/>
+                <input type="submit" value="获取token"/>
+            </div>
+        </form>
+
+        <br/>
+        <br/>
+
+        <form action="/faceId/redirect">
+            <div>
+                token:<input type="text" name="token"/>
+                <input type="submit" value="请求识别"/>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
