@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- 缩放设置 -->
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>支付结果</title>
+</head>
+<body>
+
+    <h1>
+        支付结果
+    </h1>
+
+    <br/>
+    <br/>
+
+    <div>
+        <div th:each="entry:${result}">
+            <span th:text="${entry.key}+' : '+${entry.value}"></span>
+        </div>
+
+
+        <div >
+            <div th:text="${qrCode}"></div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>结果页面</title>
+</head>
+<body>
+
+    <h1>
+        成功
+    </h1>
+
+    <br/>
+    <br/>
+
+    <div>
+
+        <div>
+            Token：<span th:text="${oauthTokenResponse.accessToken}"></span><br/>
+            alipayUserId：<span th:text="${oauthTokenResponse.alipayUserId}"></span><br/>
+            userId：<span th:text="${oauthTokenResponse.userId}"></span><br/>
+        </div>
+        <div>
+            用户名：<span th:text="${userinfoShareResponse.nickName}"></span><br/>
+            头像：<img width="60" height="60" th:src="${userinfoShareResponse.avatar}"/>
+        </div>
+
+    </div>
+
+</body>
+</html>

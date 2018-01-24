@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>xxx</title>
+	</head>
+
+	<body style="background-color: white">
+
+		<input type="text" name=""/>
+
+		<div id="con">
+
+		</div>
+
+
+		<script type="text/javascript">
+            document.activeElement.blur();
+            document.onkeypress = grabEvent;
+            document.onirkeypress = grabEvent;
+
+            var div = document.getElementById("con");
+
+            function grabEvent(event){
+                document.activeElement.blur();
+                div.innerHTML = "";
+                for(pro in event){
+                    console.info("event:"+pro+":"+event[pro]);
+                    div.innerHTML = div.innerHTML + ("属性:"+pro+"      值:"+event[pro]+"<br/>");
+                }
+                // for(pro in event){
+                // 	alert(pro+":"+event[pro]);
+                // }
+
+                var keycode = event.which;
+
+            }
+
+            document.onkeydown = handleEvent;
+            function handleEvent(event){
+                document.activeElement.blur();
+                var keycode = event.keyCode || event.which;
+                // alert(keycode+" "+event.keyValue);
+            }
+
+		</script>
+		
+
+	</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Thymeleaf</title>
+</head>
+<body>
+
+    <h1>
+        Thymeleaf 特性
+    </h1>
+
+    <br/>
+    <br/>
+
+    <div>
+
+        <div>
+            <h3>上下文</h3>
+            <div>
+                ctx: <span th:text="${#ctx.getLocale()}">ctx</span><br/>
+                ctx.request: <span th:text="${#httpServletRequest.getAttribute('requestParam')}">ctx.request</span><br/>
+                ctx.session: <span th:text="${#httpSession.getAttribute('sessionParam')}">ctx.session</span><br/>
+                ctx.locale: <span th:text="${#locale}">ctx.locale</span><br/>
+                ctx.vars: <span th:text="${#vars['org.springframework.web.servlet.View.selectedContentType']}">vars</span><br/>
+            </div>
+        </div>
+
+
+        <div>
+            <h3>web容器</h3>
+            <div>
+                request:<span th:text="${param.size()}">这里是request</span><br/>
+                session:<span th:text="${session}"></span>这里是session<br/>
+                application:<span th:text="${application['javax.servlet.context.tempdir']}">这里是application</span><br/>
+            </div>
+        </div>
+
+
+        <div>
+            <h3>变量</h3>
+            <div>
+                自定义变量:
+                <span th:with="sessionVar=${session.sessionParam}">
+                    <a th:text="${sessionVar}">setVar</a>
+                </span>
+                <br/>
+            </div>
+        </div>
+
+
+        <div>
+            <h2>内联</h2>
+
+            <div>
+                <h3>text</h3>
+                inline:text<span th:inline="text">[[${session.sessionParam}]]</span><br/>
+                inline[]:<span>[[${session.sessionParam}]]</span><br/>
+                inline[#]:<span>[# th:text="${session.sessionParam}" /]</span><br/>
+            </div>
+
+            <div>
+                <h3>javascript</h3>
+                <div id="jsSession">
+                </div>
+                <script th:inline="javascript">
+                    var session = /*[[${session.sessionParam}]]*/ "静态的session";
+                    document.getElementById("jsSession").innerHTML = session;
+                </script>
+            </div>
+
+        </div>
+
+
+
+        <div>
+            <p data-th-text="${#locale.country}"></p>
+            <p data-th-text="${#calendars.format(#calendars.createNow(),'YYYY-MM-dd HH:mm:ss')}"></p>
+            <a href="https://www.baidu.com" th:href="@{https://www.baidu.com/s(wd=${#locale.country})}">百度</a>
+            <a href="" data-th-href="@{/}">链接/</a>
+            <a href="" data-th-href="@{~}">链接~</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

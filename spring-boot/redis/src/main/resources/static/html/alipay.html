@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>alipay</title>
+</head>
+<body style="background-color: #ffffff">
+
+    <h1>
+        alipay
+    </h1>
+
+    <div>
+
+        <p data-th-text="${#calendars.format(#calendars.createNow(),'dd MMMM YYYY')}"></p>
+
+        <button onclick="window.location.href = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018011501876689&scope=auth_user&redirect_uri=http%3A%2F%2F18b024e2.ngrok.io%2Falipay%2Ftoken%2FreturnUrl&state=test'">
+            用户信息获取授权获取Token
+        </button>
+
+        <button onclick="window.location.href = '/alipay/token/userAuth'">
+            用户授权
+        </button>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = 'https://openauth.alipay.com/oauth2/appToAppAuth.htm?app_id=2016080300156400&redirect_uri=http%3A%2F%2F18b024e2.ngrok.io%2Falipay%2Fconfig%2FnotifyUrl'">
+            应用授权
+        </button>
+        <button onclick="window.location.href = 'https://openauth.alipaydev.com/oauth2/appToAppAuth.htm?app_id=2016080300156400&redirect_uri=http%3A%2F%2F18b024e2.ngrok.io%2Falipay%2Fconfig%2FnotifyUrl'">
+            应用授权(沙箱)
+        </button>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = '/alipay/cardVoucher/template/add'">
+            创建卡券模板
+        </button>
+
+        <button onclick="window.location.href = '/alipay/cardVoucher/template/update'">
+            更新卡券模板
+        </button>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = '/alipay/cardVoucher/add'">
+            发放卡券
+        </button>
+
+        <button onclick="window.location.href = '/alipay/cardVoucher/update'">
+            更新卡券
+        </button>
+
+        <br/>
+        <br/>
+
+        <form action="/alipay/wap/query" method="post">
+            <input type="submit" value="订单查询"/>
+            <input type="text" name="tradeNo" size="64"/>
+        </form>
+
+        <form action="/alipay/wap/cancel" method="post">
+            <input type="submit" value="订单撤销"/>
+            <input type="text" name="tradeNo" size="64"/>
+        </form>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = '/alipay/web/pay'">
+            web支付
+        </button>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = '/alipay/wap/pay'">
+            wap支付
+        </button>
+
+        <br/>
+        <br/>
+
+        <button onclick="window.location.href = '/alipay/f2f/precreate'">
+            当面付(用户扫码)
+        </button>
+
+        <br/>
+        <br/>
+
+
+    </div>
+
+</body>
+</html>
