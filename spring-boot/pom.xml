@@ -17,6 +17,8 @@
         <module>redis</module>
         <module>thrift</module>
         <module>protobuf</module>
+        <module>dubbo</module>
+        <module>druid</module>
     </modules>
 
 </project>

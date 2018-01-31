@@ -50,6 +50,18 @@
                 <version>${wabjars.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
@@ -124,6 +136,13 @@
                 <configuration>
                     <fork>true</fork>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -159,6 +178,18 @@
 
 
     </build>
+
+
+    <distributionManagement>
+        <repository>
+            <id>my</id>
+            <url>file:/Users/marco/.m2/repository</url>
+        </repository>
+        <snapshotRepository>
+            <id>my</id>
+            <url>file:/Users/marco/.m2/repository</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 </project>

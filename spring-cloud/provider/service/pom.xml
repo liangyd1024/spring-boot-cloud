@@ -49,13 +49,6 @@
                 <configuration>
                     <mainClass>com.lyd.spring.provider.service.Application</mainClass>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

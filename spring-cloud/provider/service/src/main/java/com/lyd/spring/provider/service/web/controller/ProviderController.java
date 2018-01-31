@@ -1,6 +1,6 @@
 package com.lyd.spring.provider.service.web.controller;
 
-import com.lyd.spring.provider.service.web.model.User;
+import com.lyd.spring.provider.facade.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestBody;

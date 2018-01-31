@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-lazy-init="true">
+
+    <dubbo:application name="springboot.provider"/>
+    <!-- 使用zookeeper广播注册中心暴露服务地址 -->
+    <dubbo:registry id="zookeeper_provider" protocol="zookeeper"
+                    address="${zookeeper.url}"/>
+    <!--  协议  -->
+    <dubbo:protocol name="dubbo" port="${dubbo.service.port}"/>
+    <!-- 监控中心配置 -->
+    <dubbo:monitor protocol="zookeeper_provider"/>
+    <!-- 服务端配置 200个线程 filter:服务监控Filter -->
+    <dubbo:provider threads="300"/>
+
+
+
+    <dubbo:service
+            id="helloWorldFacade"
+            retries="0"
+            interface="com.lyd.spring.boot.dubbo.provider.facade.HelloWorldFacade"
+    />
+
+
+
+</beans>
